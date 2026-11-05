@@ -20,11 +20,13 @@
 
 ## 1. Topologi GNS3
 
-![Topologi GNS3 K-60](GNS3-VLSM/topology/gambar_topologiku.png)
+<img width="1360" height="768" alt="WhatsApp Image 2026-11-05 at 19 55 23" src="https://github.com/user-attachments/assets/d49219ed-435e-4526-9549-c2e83aa0e293" />  
+
 
 Topologi terdiri atas 13 router (`Cyberia`, `Wired`, `Navi`, `Tachibana`, `Psyche`, `Copland`, `Schumann`, `Accela`, `Deus`, `Protocol7`, `Knights`, `Phantoma`, dan `Shibuya`), 13 Ethernet switch, 25 node host, dan satu NAT. Router **Wired** menjadi simpul distribusi menuju cabang Navi, Tachibana, serta segmen bersama Switch2 (`Psyche`, `Copland`, `Schumann`).
 
-![Penandaan 25 subnet pada topologi](GNS3-VLSM/topology/topologi-vlsm-25-subnet.png)
+<img width="1280" height="724" alt="WhatsApp Image 2026-11-05 at 19 55 32" src="https://github.com/user-attachments/assets/7d1e2bac-ca07-41aa-b605-3d7861bcc034" />  
+
 
 ## 2. Perencanaan dan Pembagian IPv4 VLSM
 
@@ -34,7 +36,8 @@ Alamat dialokasikan dari kebutuhan host terbesar ke terkecil. Untuk setiap LAN, 
 
 ### 2.1 Tabel pembagian IP
 
-![Tabel pembagian IP](GNS3-VLSM/ip-allocation/tabel-pembagian-ip.png)
+<img width="1280" height="720" alt="WhatsApp Image 2026-11-05 at 19 55 39" src="https://github.com/user-attachments/assets/5c5e21e3-d04d-41f1-a047-dfe967e3c97c" />  
+
 
 | Segmen | Network ID | Prefix | Netmask | Broadcast | Range usable | Usable |
 |---|---|---|---|---|---|---:|
@@ -66,7 +69,8 @@ Alamat dialokasikan dari kebutuhan host terbesar ke terkecil. Untuk setiap LAN, 
 
 ### 2.2 Pohon pembagian IP
 
-![Pohon VLSM](GNS3-VLSM/vlsm-tree/pohon-vlsm-k60.png)
+<img width="1600" height="800" alt="WhatsApp Image 2026-11-05 at 19 55 44" src="https://github.com/user-attachments/assets/85d383be-51ae-47a9-beb5-05cc86a724cf" />  
+
 
 Pohon IP dibagi bertingkat menggunakan batas network biner yang benar; subnet `/22`, `/23`, `/24`, `/25`, `/26`, `/27`, `/29`, dan `/30` merupakan hasil akhir alokasi di atas. Cabang yang belum dialokasikan tidak dianggap LAN aktif.
 
@@ -210,9 +214,7 @@ GAGAL   : 0
 
 Artinya seluruh **24 host tujuan dapat dijangkau dari JJ** pada saat pengujian, bukan bukti bahwa setiap kemungkinan pasangan host atau setiap interface router sudah diuji dua arah.
 
-![Bukti pengujian ping](GNS3-VLSM/testing/hasil-ping-k60.png)
-
-## 5. Analisis Hasil
+## 5. Analisis Hasil (VLSM)
 
 1. **Pengalamatan:** seluruh 25 subnet berada dalam blok induk `192.241.0.0/19` dan tidak saling overlap.
 2. **Efisiensi subnet:** prefix LAN dipilih menurut kebutuhan host dan kapasitas usable; link point-to-point menggunakan `/30`, sedangkan subnet bersama Switch2 menggunakan `/29`.
